@@ -114,6 +114,10 @@ select {
   color: #fff;
 }
 
+.text-content span {
+  color: hsl(194, 61%, 54%);
+}
+
 #intro h1 {
   font-family: "Rubik", sans-serif;
   margin-bottom: 1rem;
@@ -248,14 +252,19 @@ select {
 }
 
 .my-card {
+  width: 256px;
   height: 450px;
+  border-radius: 10px;
   margin-bottom: 3rem;
   overflow: hidden;
   position: relative;
 }
 
 .my-card img {
+  width: 256px;
   height: 450px;
+  border-radius: 10px;
+  overflow: hidden;
   transition: 300ms ease-in-out;
 }
 
@@ -325,14 +334,14 @@ a:hover {
 }
 
 .footer p {
-  font-size: 16px;
-  line-height: 30px;
-  color: #898b96;
+  font-size: 1rem;
+  line-height: 1.875rem;
+  color: hsl(231, 6%, 56%);
   font-weight: 300;
 }
 
 .footer a {
-  color: #5867dd;
+  color: hsl(233, 66%, 61%);
 }
 
 .no-padding {
@@ -340,21 +349,21 @@ a:hover {
 }
 
 .footer-big {
-  padding: 105px 0 65px 0;
+  padding: 6.5625rem 0 4rem 0;
 }
 
 .footer-big .footer-widget {
-  margin-bottom: 40px;
+  margin-bottom: 1.5rem;
 }
 
 .footer-big .footer-menu ul li a,
 .footer-big p,
 .footer-big ul li {
-  color: #898b96;
+  color: hsl(231, 6%, 56%);
 }
 
 .footer-menu {
-  padding-left: 48px;
+  padding-left: 3rem;
 }
 
 .footer-menu ul li a {
@@ -376,7 +385,7 @@ a:hover {
 .footer-widget-title {
   transform: translatey(-7px);
   color: white;
-  line-height: 42px;
+  line-height: 2.625rem;
   margin-bottom: 10px;
   font-size: 1.3rem;
 }
@@ -384,13 +393,13 @@ a:hover {
 .mini-footer {
   background: hsl(194, 61%, 54%);
   text-align: center;
-  padding: 32px 0;
+  padding: 2rem 0;
 }
 
 .mini-footer p {
   margin: 0;
-  line-height: 26px;
-  font-size: 15px;
+  line-height: 1.625rem;
+  font-size: 1rem;
   color: #fff;
 }
 
