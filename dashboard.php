@@ -1,10 +1,19 @@
+<?php 
+include 'includes/config.php';
+  session_start();
+  if(!isset($_SESSION["user_username"])) {
+    header("Location: index.php");
+    die();
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="./css/dashboard.css" />
     <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,6 +23,12 @@
     <!-- Bootstrap's js -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous" defer></script>
+    <!-- font awesome's kit code -->
+		<script
+			src="https://kit.fontawesome.com/bc44dd7ee2.js"
+			crossorigin="anonymous"
+			defer
+		></script>
     <!-- Title -->
     <title>Beyond Reality</title>
   </head>
@@ -31,7 +46,6 @@
               <li class="nav-item">
                 <a class="nav-link px-4" href="logout.php">Logout</a>
               </li>
-              </li>
             </ul>
           </div>
         </div>
@@ -39,7 +53,129 @@
     </header>
     <!-- navbar -->
 
-    
+    <!-- header -->
+    <header class="text-center">
+      <h1>Welcome back, <span>admin!</span></h1>
+    </header>
+    <!-- header -->
+
+    <!-- section table pegawai-->
+    <section>
+      <div class="container p-5">
+        <h3>Data Pegawai</h3>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Nama Pegawai</th>
+              <th scope="col">Tanggal Lahir</th>
+              <th scope="col">Jenis Kelamin</th>
+              <th scope="col">Jabatan</th>
+              <th scope="col">Divisi</th>
+              <th scope="col">Edit</th>
+              <th scope="col">Hapus</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php 
+              $query = mysqli_query($conn, "SELECT * FROM pegawai ORDER BY id_pegawai ASC");
+              while($data = mysqli_fetch_array($query)) {
+            ?>
+            <tr>
+              <td><?php echo $data['id_pegawai']; ?></td>
+              <td><?php echo $data['nama_pegawai']; ?></td>
+              <td><?php echo $data['tgl_lahir']; ?></td>
+              <td><?php echo $data['Jenis_kelamin']; ?></td>
+              <td><?php echo $data['jabatan']; ?></td>
+              <td><?php echo $data['divisi']; ?></td>
+              <td><a href="<?php echo 'edit-pegawai.php?id='. $data['id_pegawai']; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
+              <td><a href="<?php echo 'hapus-pegawai.php?id='. $data['id_pegawai']; ?>"><i class="fa-solid fa-trash"></i></a></td>
+            </tr>
+            <?php 
+              }
+            ?>
+          </tbody>
+        </table>
+        <div class="text-center mt-5">
+          <a href="add-pegawai.php">Tambah</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- section data jabatan -->
+    <section>
+      <div class="container p-5">
+        <h3>Data Divisi</h3>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Nama Divisi</th>
+              <th scope="col">Edit</th>
+              <th scope="col">Hapus</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Larry</td>
+              <td>The bird</td>
+              <td>@twitter</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="text-center mt-4">
+          <a href="">Tambah</a>
+        </div>
+      </div>
+    </section>
+    <!-- section data jabatan -->
+
+    <!-- 
+      jabatan:
+      direktur
+      wakil direktur
+      sekretaris
+      bendahara
+      manajer
+      staff
+
+      divisi:
+      UI/UX
+      programming
+      product
+      database
+      entertainment 
+    -->
+
+    <footer class="mt-5">
+      <div class="mini-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="copyright-text">
+                <p>
+                  © 2022 <a href="#">Beyond Reality</a>. All rights reserved. Created by
+                  <a href="#">Lorenzo-Gilang</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
 
   </body>
 </html>

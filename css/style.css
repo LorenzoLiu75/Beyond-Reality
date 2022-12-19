@@ -180,6 +180,10 @@ select {
   margin-bottom: 2rem;
 }
 
+.connect h1 span {
+  color: hsl(194, 61%, 54%);
+}
+
 .connect button {
   padding: 0.5rem 1.6rem;
   border: none;

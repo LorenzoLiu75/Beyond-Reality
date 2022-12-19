@@ -1,3 +1,13 @@
+<?php 
+  include 'includes/config.php';
+  session_start();
+
+  if(isset($_SESSION["user_username"])) {
+    header("Location: dashboard.php");
+    die();
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -75,7 +85,7 @@
           </div>
           <div class="col-md-6 my-auto">
             <div class="text-content text-center ps-5">
-              <h1 class="fw-bold">Let's Connected Together</h1>
+              <h1 class="fw-bold">Let's Connected <span>Together</span></h1>
               <form action="login.php" method="post">
                 <div class="form-element">
                   <input type="text" name="username" id="username" placeholder="username" required />
