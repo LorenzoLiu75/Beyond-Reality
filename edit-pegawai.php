@@ -1,4 +1,4 @@
-<?php 
+<?php
   include 'includes/config.php';
   session_start();
   if(!isset($_SESSION["user_username"])) {
@@ -6,31 +6,23 @@
     die();
   }
 
-  $sql = null;
-  $msg = "";
-
-  if(isset($_POST['addPegawai'])) {
-
-    $id = $_POST['idPegawai'];
-    $name = $_POST['namaPegawai'];
-    $date = $_POST['tanggal'];
-    $jk = $_POST['jk'];
-    $jabatan = $_POST['jabatan'];
-    $divisi = $_POST['divisi'];
+  if (isset($_GET['id'])) {
+    $idPegawai = $_GET['id'];
     
+    $sql = "SELECT * FROM pegawai WHERE id_pegawai = '$idPegawai';";
+    $data = mysqli_query($conn, $sql);
 
-    $sql = "INSERT INTO pegawai (id_pegawai, nama_pegawai, tgl_lahir, jenis_kelamin, jabatan, divisi) VALUES ('$id', '$name', '$date', '$jk', '$jabatan', '$divisi')";
+    $result = mysqli_fetch_array($data);
+    
+    $nama = $result['nama_pegawai'];
+    $tanggal = $result['tgl_lahir'];
+    $jk = $result['jenis_kelamin'];
+    // $jabatan = $result['jabatan'];
+    // $divisi = $result['divisi'];
 
-    $result = mysqli_query($conn, $sql);
-
-    if($result) {
-      $msg = "<div class='alert'>Add pegawai is succeed</div>";
-      header("refresh:2; url=dashboard.php");
-    }
-    else {
-      $msg = "<div class='alert alert-danger'>Add pegawai is failed</div>";
-    }
+    $jabatan = mysqli_query($conn, "SELECT jabatan FROM pegawai");
   }
+  
 ?>
 
 <!DOCTYPE html>
@@ -64,33 +56,44 @@
         <div class="col-md-5">
           <div class="card bg-white rounded-border shadow">
             <div class="card-header">
-              <h4>Add Pegawai</h4>
+              <h4>Edit Pegawai</h4>
             </div>
             <div class="card-body p-4">
-              <?php echo $msg; ?>
               <form action="" method="post">
                 <div class="mb-3">
                   <label for="id" class="form-label">ID</label>
-                  <input type="text" class="form-control" name="idPegawai">
+                  <input type="text" class="form-control" name="idPegawai" value="<?php echo $idPegawai ?>">
                 </div>
                 <div class="mb-3">
                   <label for="id" class="form-label">Nama Pegawai</label>
-                  <input type="text" class="form-control" name="namaPegawai" id="nama">
+                  <input type="text" class="form-control" name="namaPegawai" id="nama" value="<?php echo $nama ?>">
                 </div>
                 <div class="mb-3">
                   <label for="id" class="form-label">Tanggal Lahir</label>
-                  <input type="date" class="form-control" name="tanggal" id="tanggal">
+                  <input type="date" class="form-control" name="tanggal" id="tanggal" value="<?php echo $tanggal ?>">
                 </div>
                 <div class="mb-3">
                   <label for="id" class="form-label">Jenis Kelamin</label>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="jk" id="jk" value="Pria">
+                    <input class="form-check-input" type="radio" name="jk" id="jk" value="Pria"
+                      <?php 
+                        if ($result['jenis_kelamin'] == 'Pria') {
+                          echo "checked";
+                        }
+                      ?>
+                    >
                     <label class="form-check-label" for="flexRadioDefault1">
                       Pria
                     </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="jk" id="jk" value="Wanita">
+                    <input class="form-check-input" type="radio" name="jk" id="jk" value="Wanita"
+                    <?php 
+                        if ($result['jenis_kelamin'] == 'Wanita') {
+                          echo "checked";
+                        }
+                      ?>
+                    >
                     <label class="form-check-label" for="flexRadioDefault1">
                       Wanita
                     </label>
@@ -99,7 +102,7 @@
                 <div class="mb-3">
                   <label for="id" class="form-label">Jabatan</label>
                   <select id="jabatan" name="jabatan" class="form-select" aria-label="Default select example">
-                    <option selected>Select Jabatan</option>
+                    <option selected value="">Select Jabatan</option>
                     <option value="direktur">Direktur</option>
                     <option value="wakil-direktur">Wakil Direktur</option>
                     <option value="sekretaris">Sekretaris</option>
@@ -121,7 +124,7 @@
                     ?>
                   </select>
                 </div>
-                <button type="submit" name="addPegawai" class="btn btn-primary">Add</button>
+                <button type="submit" name="updatePegawai" class="btn btn-primary">Update</button>
                 <button class="btn btn-danger" onclick="history.back()" >Cancel</button>
               </form>
             </div>

@@ -85,7 +85,7 @@ include 'includes/config.php';
               <td><?php echo $data['id_pegawai']; ?></td>
               <td><?php echo $data['nama_pegawai']; ?></td>
               <td><?php echo $data['tgl_lahir']; ?></td>
-              <td><?php echo $data['Jenis_kelamin']; ?></td>
+              <td><?php echo $data['jenis_kelamin']; ?></td>
               <td><?php echo $data['jabatan']; ?></td>
               <td><?php echo $data['divisi']; ?></td>
               <td><a href="<?php echo 'edit-pegawai.php?id='. $data['id_pegawai']; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
@@ -105,6 +105,42 @@ include 'includes/config.php';
     <!-- section data jabatan -->
     <section>
       <div class="container p-5">
+        <h3>Data Jabatan</h3>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Nama Jabatan</th>
+              <th scope="col">Edit</th>
+              <th scope="col">Hapus</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php 
+              $query = mysqli_query($conn, "SELECT * FROM jabatan ORDER BY id_jabatan ASC");
+              while($data = mysqli_fetch_array($query)) {
+            ?>
+            <tr>
+              <td><?php echo $data['id_jabatan']; ?></td>
+              <td><?php echo $data['nama_jabatan']; ?></td>
+              <td><a href="<?php echo 'edit-jabatan.php?id='. $data['id_jabatan']; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
+              <td><a href="<?php echo 'hapus-jabatan.php?id='. $data['id_jabatan']; ?>"><i class="fa-solid fa-trash"></i></a></td>
+            </tr>
+            <?php 
+              }
+            ?>
+          </tbody>
+        </table>
+        <div class="text-center mt-4">
+          <a href="add-jabatan.php">Tambah</a>
+        </div>
+      </div>
+    </section>
+    <!-- section data jabatan -->
+
+    <!-- section data divisi -->
+    <section>
+      <div class="container p-5">
         <h3>Data Divisi</h3>
         <table class="table table-bordered">
           <thead>
@@ -116,49 +152,27 @@ include 'includes/config.php';
             </tr>
           </thead>
           <tbody>
+            <?php 
+              $query = mysqli_query($conn, "SELECT * FROM divisi ORDER BY id_divisi ASC");
+              while($data = mysqli_fetch_array($query)) {
+            ?>
             <tr>
-              <td>1</td>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
+              <td><?php echo $data['id_divisi']; ?></td>
+              <td><?php echo $data['nama_divisi']; ?></td>
+              <td><a href="<?php echo 'edit-divisi.php?id='. $data['id_divisi']; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
+              <td><a href="<?php echo 'hapus-divisi.php?id='. $data['id_divisi']; ?>"><i class="fa-solid fa-trash"></i></a></td>
             </tr>
-            <tr>
-              <td>2</td>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Larry</td>
-              <td>The bird</td>
-              <td>@twitter</td>
-            </tr>
+            <?php 
+              }
+            ?>
           </tbody>
         </table>
         <div class="text-center mt-4">
-          <a href="">Tambah</a>
+          <a href="add-divisi.php">Tambah</a>
         </div>
       </div>
     </section>
     <!-- section data jabatan -->
-
-    <!-- 
-      jabatan:
-      direktur
-      wakil direktur
-      sekretaris
-      bendahara
-      manajer
-      staff
-
-      divisi:
-      UI/UX
-      programming
-      product
-      database
-      entertainment 
-    -->
 
     <footer class="mt-5">
       <div class="mini-footer">
