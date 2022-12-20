@@ -9,7 +9,7 @@
   if (isset($_GET["id"])) {
     $id = mysqli_real_escape_string($conn, $_GET["id"]);
 
-    $sql = "DELETE FROM jabatan WHERE id_jabatan ='{$id}'";
+    $sql = "DELETE FROM pegawai WHERE id_pegawai ='{$id}'";
     mysqli_query($conn, $sql);
     header("Location: dashboard.php");
   }

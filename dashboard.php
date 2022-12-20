@@ -1,5 +1,5 @@
 <?php 
-include 'includes/config.php';
+  include 'includes/config.php';
   session_start();
   if(!isset($_SESSION["user_username"])) {
     header("Location: index.php");
@@ -30,6 +30,7 @@ include 'includes/config.php';
 			defer
 		></script>
     <!-- Title -->
+    <link rel="icon" type="image/x-icon" href="./images/favicon.png"/>
     <title>Beyond Reality</title>
   </head>
   <body>
@@ -55,7 +56,7 @@ include 'includes/config.php';
 
     <!-- header -->
     <header class="text-center">
-      <h1>Welcome back, <span>admin!</span></h1>
+      <h1>Welcome back, <span><?php echo $_SESSION["user_username"] ?>!</span></h1>
     </header>
     <!-- header -->
 
@@ -72,8 +73,8 @@ include 'includes/config.php';
               <th scope="col">Jenis Kelamin</th>
               <th scope="col">Jabatan</th>
               <th scope="col">Divisi</th>
-              <th scope="col">Edit</th>
-              <th scope="col">Hapus</th>
+              <th class="text-center" scope="col">Edit</th>
+              <th class="text-center" scope="col">Hapus</th>
             </tr>
           </thead>
           <tbody>
@@ -88,8 +89,8 @@ include 'includes/config.php';
               <td><?php echo $data['jenis_kelamin']; ?></td>
               <td><?php echo $data['jabatan']; ?></td>
               <td><?php echo $data['divisi']; ?></td>
-              <td><a href="<?php echo 'edit-pegawai.php?id='. $data['id_pegawai']; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
-              <td><a href="<?php echo 'hapus-pegawai.php?id='. $data['id_pegawai']; ?>"><i class="fa-solid fa-trash"></i></a></td>
+              <td class="text-center"><a href="<?php echo 'edit-pegawai.php?id='. $data['id_pegawai']; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
+              <td class="text-center"><a href="<?php echo 'hapus-pegawai.php?id='. $data['id_pegawai']; ?>"><i class="fa-solid fa-trash"></i></a></td>
             </tr>
             <?php 
               }
@@ -97,7 +98,7 @@ include 'includes/config.php';
           </tbody>
         </table>
         <div class="text-center mt-5">
-          <a href="add-pegawai.php">Tambah</a>
+          <a class="btn-tambah" href="add-pegawai.php">Tambah</a>
         </div>
       </div>
     </section>
@@ -111,8 +112,8 @@ include 'includes/config.php';
             <tr>
               <th scope="col">ID</th>
               <th scope="col">Nama Jabatan</th>
-              <th scope="col">Edit</th>
-              <th scope="col">Hapus</th>
+              <th class="text-center" scope="col">Edit</th>
+              <th class="text-center" scope="col">Hapus</th>
             </tr>
           </thead>
           <tbody>
@@ -123,8 +124,8 @@ include 'includes/config.php';
             <tr>
               <td><?php echo $data['id_jabatan']; ?></td>
               <td><?php echo $data['nama_jabatan']; ?></td>
-              <td><a href="<?php echo 'edit-jabatan.php?id='. $data['id_jabatan']; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
-              <td><a href="<?php echo 'hapus-jabatan.php?id='. $data['id_jabatan']; ?>"><i class="fa-solid fa-trash"></i></a></td>
+              <td class="text-center"><a href="<?php echo 'edit-jabatan.php?id='. $data['id_jabatan']; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
+              <td class="text-center"><a href="<?php echo 'hapus-jabatan.php?id='. $data['id_jabatan']; ?>"><i class="fa-solid fa-trash"></i></a></td>
             </tr>
             <?php 
               }
@@ -132,7 +133,7 @@ include 'includes/config.php';
           </tbody>
         </table>
         <div class="text-center mt-4">
-          <a href="add-jabatan.php">Tambah</a>
+          <a class="btn-tambah" href="add-jabatan.php">Tambah</a>
         </div>
       </div>
     </section>
@@ -147,8 +148,8 @@ include 'includes/config.php';
             <tr>
               <th scope="col">ID</th>
               <th scope="col">Nama Divisi</th>
-              <th scope="col">Edit</th>
-              <th scope="col">Hapus</th>
+              <th class="text-center" scope="col">Edit</th>
+              <th class="text-center" scope="col">Hapus</th>
             </tr>
           </thead>
           <tbody>
@@ -159,8 +160,8 @@ include 'includes/config.php';
             <tr>
               <td><?php echo $data['id_divisi']; ?></td>
               <td><?php echo $data['nama_divisi']; ?></td>
-              <td><a href="<?php echo 'edit-divisi.php?id='. $data['id_divisi']; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
-              <td><a href="<?php echo 'hapus-divisi.php?id='. $data['id_divisi']; ?>"><i class="fa-solid fa-trash"></i></a></td>
+              <td class="text-center"><a href="<?php echo 'edit-divisi.php?id='. $data['id_divisi']; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
+              <td class="text-center"><a href="<?php echo 'hapus-divisi.php?id='. $data['id_divisi']; ?>"><i class="fa-solid fa-trash"></i></a></td>
             </tr>
             <?php 
               }
@@ -168,7 +169,7 @@ include 'includes/config.php';
           </tbody>
         </table>
         <div class="text-center mt-4">
-          <a href="add-divisi.php">Tambah</a>
+          <a class="btn-tambah" href="add-divisi.php">Tambah</a>
         </div>
       </div>
     </section>

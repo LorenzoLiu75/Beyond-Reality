@@ -4,6 +4,9 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  margin: 0;
+	padding: 0;
+	font: inherit;
 }
 
 /* Remove default margin */
@@ -255,6 +258,10 @@ select {
   margin-bottom: 3rem;
 }
 
+#creations h1 span {
+  color: hsl(194, 61%, 54%);
+}
+
 .my-card {
   width: 256px;
   height: 450px;
@@ -314,6 +321,10 @@ select {
 .widget-about h3 {
   font-family: "Rubik", sans-serif;
   color: #fff;
+}
+
+.widget-about h3 span {
+  color: hsl(194, 61%, 54%);
 }
 
 .footer-menu ul {

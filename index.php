@@ -25,6 +25,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous" defer></script>
     <!-- Title -->
+    <link rel="icon" type="image/x-icon" href="./images/favicon.png"/>
     <title>Beyond Reality</title>
   </head>
   <body>
@@ -103,9 +104,9 @@
     </section>
     <!-- login section -->
 
-    <!-- our creation section -->
+    <!-- our creations section -->
     <section id="creations">
-      <h1 class="text-center">Our Creations</h1>
+      <h1 class="text-center">Our <span>Creations</span></h1>
       <div class="container">
         <div class="row">
           <div class="col">
@@ -195,7 +196,7 @@
             <div class="col-md-3 col-sm-12">
               <div class="footer-widget">
                 <div class="widget-about">
-                  <h3>Beyond Reality</h3>
+                  <h3>Beyond <span>Reality</span></h3>
                   <p>Beyond reality is a VR platform that strives to bring the most up-to-date and up-to-date technology so that users can experience a fun, immersive and stunning VR experience so they can explore real adventures.</p>
                 </div>
               </div>

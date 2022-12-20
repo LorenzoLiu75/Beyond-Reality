@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 20, 2022 at 08:51 AM
+-- Generation Time: Dec 20, 2022 at 04:44 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -44,7 +44,9 @@ INSERT INTO `divisi` (`id_divisi`, `nama_divisi`) VALUES
 (5, 'Entertainment'),
 (6, 'Data Analyst'),
 (7, 'Quality Control'),
-(8, 'Promotion');
+(8, 'Promotion'),
+(9, 'Selling'),
+(10, 'Human Resources');
 
 -- --------------------------------------------------------
 
@@ -89,10 +91,16 @@ CREATE TABLE `pegawai` (
 --
 
 INSERT INTO `pegawai` (`id_pegawai`, `nama_pegawai`, `tgl_lahir`, `jenis_kelamin`, `jabatan`, `divisi`) VALUES
-(1, 'lorenzo', '2022-12-07', 'Pria', 'direktur', 'UI/UX'),
-(2, 'Sinta', '2022-12-25', 'Wanita', 'sekretaris', 'Programming'),
-(3, 'Budi', '2013-01-15', 'Pria', 'manajer', 'Database'),
-(4, 'ruri', '2022-12-08', '', 'manajer', 'Data Analyst');
+(1, 'James', '1977-06-07', 'Pria', 'Direktur', 'Programming'),
+(2, 'Catherine', '1993-08-18', 'Wanita', 'Sekretaris', 'Product'),
+(3, 'Laura', '1989-04-05', 'Wanita', 'Wakil Direktur', 'Entertainment'),
+(4, 'George', '1998-11-26', 'Pria', 'Manajer', 'Human Resources'),
+(5, 'Leonard', '1988-05-10', 'Pria', 'Manajer', 'UI/UX'),
+(6, 'Olivia', '1997-03-01', 'Wanita', 'Bendahara', 'Selling'),
+(7, 'Benjamin', '1981-12-17', 'Pria', 'Wakil Direktur', 'Quality Control'),
+(8, 'Ethan', '2000-01-22', 'Pria', 'Staff', 'Selling'),
+(9, 'Jane', '1990-09-13', 'Wanita', 'Staff', 'Database'),
+(10, 'Fiona', '1999-02-02', 'Wanita', 'Staff', 'UI/UX');
 
 -- --------------------------------------------------------
 
@@ -149,19 +157,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `divisi`
 --
 ALTER TABLE `divisi`
-  MODIFY `id_divisi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_divisi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `jabatan`
 --
 ALTER TABLE `jabatan`
-  MODIFY `id_jabatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_jabatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `pegawai`
 --
 ALTER TABLE `pegawai`
-  MODIFY `id_pegawai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_pegawai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -6,8 +6,10 @@
     die();
   }
 
+  $msg = "";
+
   if (isset($_GET['id'])) {
-    $idPegawai = $_GET['id'];
+    $idPegawai = mysqli_real_escape_string($conn, $_GET["id"]);
     
     $sql = "SELECT * FROM pegawai WHERE id_pegawai = '$idPegawai';";
     $data = mysqli_query($conn, $sql);
@@ -17,10 +19,26 @@
     $nama = $result['nama_pegawai'];
     $tanggal = $result['tgl_lahir'];
     $jk = $result['jenis_kelamin'];
-    // $jabatan = $result['jabatan'];
-    // $divisi = $result['divisi'];
+    $jabatan = $result['jabatan'];
+    $divisi = $result['divisi'];
+  }
 
-    $jabatan = mysqli_query($conn, "SELECT jabatan FROM pegawai");
+  if (isset($_POST['updatePegawai'])) {
+    $sql = "UPDATE pegawai SET
+            nama_pegawai = '$_POST[namaPegawai]',
+            tgl_lahir = '$_POST[tanggal]',
+            jenis_kelamin = '$_POST[jk]',
+            jabatan = '$_POST[jabatan]',
+            divisi = '$_POST[divisi]' WHERE id_pegawai = '{$idPegawai}'";
+    $result = mysqli_query($conn, $sql);
+
+    if($result) {
+      $msg = "<div class='alert alert-success'>Pegawai is updated</div>";
+      header("refresh:2; url=dashboard.php");
+    }
+    else {
+      $msg = "<div class='alert alert-danger'>Todo is not updated</div>";
+    }
   }
   
 ?>
@@ -31,7 +49,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/dashboard.css" />
+    <link rel="stylesheet" href="./css/add-edit.css" />
     <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -48,6 +66,7 @@
 			defer
 		></script>
     <!-- Title -->
+    <link rel="icon" type="image/x-icon" href="./images/favicon.png"/>
     <title>Beyond Reality</title>
   </head>
   <body>
@@ -59,11 +78,8 @@
               <h4>Edit Pegawai</h4>
             </div>
             <div class="card-body p-4">
+              <?php echo $msg; ?>
               <form action="" method="post">
-                <div class="mb-3">
-                  <label for="id" class="form-label">ID</label>
-                  <input type="text" class="form-control" name="idPegawai" value="<?php echo $idPegawai ?>">
-                </div>
                 <div class="mb-3">
                   <label for="id" class="form-label">Nama Pegawai</label>
                   <input type="text" class="form-control" name="namaPegawai" id="nama" value="<?php echo $nama ?>">
@@ -77,8 +93,8 @@
                   <div class="form-check">
                     <input class="form-check-input" type="radio" name="jk" id="jk" value="Pria"
                       <?php 
-                        if ($result['jenis_kelamin'] == 'Pria') {
-                          echo "checked";
+                        if ($jk == 'Pria') {
+                          echo " checked";
                         }
                       ?>
                     >
@@ -89,8 +105,8 @@
                   <div class="form-check">
                     <input class="form-check-input" type="radio" name="jk" id="jk" value="Wanita"
                     <?php 
-                        if ($result['jenis_kelamin'] == 'Wanita') {
-                          echo "checked";
+                        if ($jk == 'Wanita') {
+                          echo " checked";
                         }
                       ?>
                     >
@@ -102,13 +118,17 @@
                 <div class="mb-3">
                   <label for="id" class="form-label">Jabatan</label>
                   <select id="jabatan" name="jabatan" class="form-select" aria-label="Default select example">
-                    <option selected value="">Select Jabatan</option>
-                    <option value="direktur">Direktur</option>
-                    <option value="wakil-direktur">Wakil Direktur</option>
-                    <option value="sekretaris">Sekretaris</option>
-                    <option value="bendahara">Bendahara</option>
-                    <option value="manajer">Manajer</option>
-                    <option value="staff">Staff</option>
+                    <option selected>Select Jabatan</option>
+                    <?php 
+                      $jabatanOpt = mysqli_query($conn, "SELECT * FROM jabatan");
+                      while ($jOpt = mysqli_fetch_array($jabatanOpt)) {
+                        echo "<option value='$jOpt[nama_jabatan]'";
+                        if ($jabatan == $jOpt['nama_jabatan']) {
+                          echo "selected";
+                        }
+                        echo">$jOpt[nama_jabatan]</option>";
+                      }
+                    ?>
                   </select>
                 </div>
                 <div class="mb-3">
@@ -116,10 +136,13 @@
                   <select id="divisi" name="divisi" class="form-select" aria-label="Default select example">
                     <option selected>Select Divisi</option>
                     <?php 
-                      $queryDivisi = mysqli_query($conn, "SELECT * FROM divisi");
-
-                      while($divisi = mysqli_fetch_array($queryDivisi)) {
-                        echo "<option value='$divisi[nama_divisi]'>$divisi[nama_divisi]</option>";
+                      $divisiOpt = mysqli_query($conn, "SELECT * FROM divisi");
+                      while ($dOpt = mysqli_fetch_array($divisiOpt)) {
+                        echo "<option value='$dOpt[nama_divisi]'";
+                        if ($divisi == $dOpt['nama_divisi']) {
+                          echo "selected";
+                        }
+                        echo">$dOpt[nama_divisi]</option>";
                       }
                     ?>
                   </select>

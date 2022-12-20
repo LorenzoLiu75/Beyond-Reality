@@ -20,7 +20,7 @@
     $result = mysqli_query($conn, $sql);
 
     if($result) {
-      $msg = "<div class='alert'>Add divisi is succeed</div>";
+      $msg = "<div class='alert alert-success'>Add divisi is succeed</div>";
       header("refresh:2; url=dashboard.php");
     }
     else {
@@ -35,7 +35,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/dashboard.css" />
+    <link rel="stylesheet" href="./css/add-edit.css" />
     <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -52,6 +52,7 @@
 			defer
 		></script>
     <!-- Title -->
+    <link rel="icon" type="image/x-icon" href="./images/favicon.png"/>
     <title>Beyond Reality</title>
   </head>
   <body>
