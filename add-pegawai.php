@@ -100,12 +100,13 @@
                   <label for="id" class="form-label">Jabatan</label>
                   <select id="jabatan" name="jabatan" class="form-select" aria-label="Default select example">
                     <option selected>Select Jabatan</option>
-                    <option value="direktur">Direktur</option>
-                    <option value="wakil-direktur">Wakil Direktur</option>
-                    <option value="sekretaris">Sekretaris</option>
-                    <option value="bendahara">Bendahara</option>
-                    <option value="manajer">Manajer</option>
-                    <option value="staff">Staff</option>
+                    <?php 
+                      $queryJabatan = mysqli_query($conn, "SELECT * FROM jabatan");
+
+                      while($jabatan = mysqli_fetch_array($queryJabatan)) {
+                        echo "<option value='$jabatan[nama_jabatan]'>$jabatan[nama_jabatan]</option>";
+                      }
+                    ?>
                   </select>
                 </div>
                 <div class="mb-3">
