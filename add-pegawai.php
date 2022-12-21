@@ -123,8 +123,10 @@
                     ?>
                   </select>
                 </div>
-                <button type="submit" name="addPegawai" class="btn btn-primary">Add</button>
-                <button class="btn btn-danger" onclick="history.back()" >Cancel</button>
+                <div class="button">
+                  <button type="submit" name="addPegawai">Add</button>
+                  <button onclick="history.back()" >Cancel</button>
+                </div>
               </form>
             </div>
           </div>

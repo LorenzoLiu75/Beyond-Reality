@@ -147,8 +147,10 @@
                     ?>
                   </select>
                 </div>
-                <button type="submit" name="updatePegawai" class="btn btn-primary">Update</button>
-                <button class="btn btn-danger" onclick="history.back()" >Cancel</button>
+                <div class="button">
+                  <button type="submit" name="updatePegawai">Update</button>
+                  <button onclick="history.back()" >Cancel</button>
+                </div>
               </form>
             </div>
           </div>

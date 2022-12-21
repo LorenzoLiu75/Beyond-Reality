@@ -97,3 +97,31 @@ select {
   text-align: center;
   background-color: hsl(194, 84%, 64%) !important;
 }
+
+.card-body .button {
+  display: flex;
+	justify-content: space-around;
+}
+
+.card-body .button button {
+  border: none;
+	outline: none;
+	padding: .5rem 2rem;
+	border-radius: 5px;
+	background-color: hsl(194, 84%, 64%);
+	transition: 
+  color, background-color 300ms ease-in-out,
+  scale 200ms ease-in-out;
+}
+
+.card-body .button button:hover {
+  scale: 1.05;
+}
+
+.card-body .button button:nth-child(1):hover {
+	background-color:	hsl(120, 50%, 54%);
+}
+
+.card-body .button button:nth-child(2):hover {
+	background-color:	hsl(2, 61%, 54%);
+}

@@ -74,8 +74,10 @@
                   <label for="id" class="form-label">Nama Divisi</label>
                   <input type="text" class="form-control" name="namaDivisi" id="nama">
                 </div>
-                <button type="submit" name="addDivisi" class="btn btn-primary">Add</button>
-                <button class="btn btn-danger" onclick="history.back()" >Cancel</button>
+                <div class="button">
+                  <button type="submit" name="addDivisi">Add</button>
+                  <button onclick="history.back()" >Cancel</button>
+                </div>
               </form>
             </div>
           </div>

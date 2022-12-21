@@ -77,8 +77,10 @@
                   <label for="id" class="form-label">Nama Divisi</label>
                   <input type="text" class="form-control" name="namaDivisi" id="nama" value="<?php echo $nama ?>">
                 </div>
-                <button type="submit" name="updateDivisi" class="btn btn-primary">Update</button>
-                <button class="btn btn-danger" onclick="history.back()" >Cancel</button>
+                <div class="button">
+                  <button type="submit" name="updateDivisi">Update</button>
+                  <button onclick="history.back()" >Cancel</button>
+                </div>
               </form>
             </div>
           </div>
