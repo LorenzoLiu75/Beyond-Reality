@@ -263,7 +263,7 @@ select {
 }
 
 .my-card {
-  width: 256px;
+  width: 248px;
   height: 450px;
   border-radius: 10px;
   margin-bottom: 3rem;
@@ -272,7 +272,7 @@ select {
 }
 
 .my-card img {
-  width: 256px;
+  width: 248px;
   height: 450px;
   border-radius: 10px;
   overflow: hidden;
